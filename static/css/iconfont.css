@@ -1,0 +1,131 @@
+@font-face {
+  font-family: "iconfont";
+  /* Project id 4379571 */
+  src: url('//at.alicdn.com/t/c/font_4379571_9ixzu42ghy.woff2?t=1717418758728') format('woff2'),
+    url('//at.alicdn.com/t/c/font_4379571_9ixzu42ghy.woff?t=1717418758728') format('woff'),
+    url('//at.alicdn.com/t/c/font_4379571_9ixzu42ghy.ttf?t=1717418758728') format('truetype');
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-movie:before {
+  content: "\e6c3";
+}
+
+.icon-button-play--button-television-buttons-movies-play:before {
+  content: "\e610";
+}
+
+.icon-folder:before {
+  content: "\e6e9";
+}
+
+.icon-file:before {
+  content: "\e671";
+}
+
+.icon-plex:before {
+  content: "\e62c";
+}
+
+.icon-gexinghua:before {
+  content: "\e640";
+}
+
+.icon-zhuanhuan:before {
+  content: "\e62b";
+}
+
+.icon-juji:before {
+  content: "\e601";
+}
+
+.icon-tiqu:before {
+  content: "\e625";
+}
+
+.icon-chongmingming:before {
+  content: "\e623";
+}
+
+.icon-jiankong:before {
+  content: "\ebc1";
+}
+
+.icon-qingkong:before {
+  content: "\e946";
+}
+
+.icon-five:before {
+  content: "\e600";
+}
+
+.icon-zhuxiao:before {
+  content: "\e62a";
+}
+
+.icon-chongqi:before {
+  content: "\e631";
+}
+
+.icon-emby:before {
+  content: "\e715";
+}
+
+.icon-tongzhi:before {
+  content: "\e60a";
+}
+
+.icon-tongbu:before {
+  content: "\e669";
+}
+
+.icon-beifen:before {
+  content: "\e678";
+}
+
+.icon-folder-close:before {
+  content: "\eabe";
+}
+
+.icon-folder-open:before {
+  content: "\eabf";
+}
+
+.icon-caidan:before {
+  content: "\e790";
+}
+
+.icon-shezhi-xianxing:before {
+  content: "\e8b7";
+}
+
+.icon-settings:before {
+  content: "\e619";
+}
+
+.icon-gongju:before {
+  content: "\e614";
+}
+
+.icon-rizhi:before {
+  content: "\e668";
+}
+
+.icon-zhuye:before {
+  content: "\e639";
+}
+
+.icon-tianjia:before {
+  content: "\e622";
+}
+
+.icon-iconset0349:before {
+  content: "\e6f8";
+}

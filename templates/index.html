@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>115 File List</title>
+    <link rel="stylesheet" href="/static/css/iconfont.css">
+</head>
+<style>
+    #main-content{
+        margin: 1rem 2rem 1rem 2rem;
+    }
+    #nav-link{
+        margin-bottom: 1rem;
+    }
+    #nav-link{
+        color: #007bff !important;
+    }
+    #nav-link a{
+        color: #007bff !important;
+    }
+    #nav-link a:visited{
+    color: inherit;
+    }
+    /* Table Styles */
+    table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    }
+
+    /* Table Header Styles */
+    thead th {
+    background-color: #f2f2f2;
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    }
+
+    /* Table Body Styles */
+    tbody td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #ddd;
+    }
+
+    /* Table Row Hover Effect */
+    tbody tr:hover {
+    background-color: #f2f2f2;
+    }
+
+    /* .children-list:hover{
+    background-color: #cddcfa;
+    } */
+
+    /* Link Styles */
+    a.parent-link,a.file-name {
+    color: #4F6174;
+    text-decoration: none;
+    }
+
+    a:hover {
+    color: #007bff;
+    text-decoration: none;
+    }
+
+    /* Alternate Row Colors */
+    tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+    }
+
+.file-name {
+  width: 30rem; /* 设置固定宽度 */
+  white-space: nowrap; /* 禁止换行 */
+  overflow: hidden; /* 隐藏超出宽度的部分 */
+  text-overflow: ellipsis; /* 使用省略号表示被隐藏的部分 */
+  display: inline-block; /* 让元素可以使用 `title` 属性 */
+  vertical-align: middle; /* 垂直居中 */
+}
+.link-icon-folder{
+    vertical-align: middle; /* 可选值还有 top、bottom 等 */
+    color: #f7cc4f;
+}
+.link-icon-movie{
+    font-size: 10px;
+    vertical-align: middle; /* 可选值还有 top、bottom 等 */
+    color: #ed725e;
+}
+    </style>
+
+    <body>
+        <div id="main-content">
+        {{ header | safe }}
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Open</th>
+                    <th>Size</th>
+                    <th>Attr</th>
+                    <th>Desc</th>
+                    <th>Last Modified</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if attr["id"] != 0 %}
+                <tr>
+                    <td>
+                        <a class="parent-link" href="/?id={{ attr["parent_id"] }}">&nbsp;…</a>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                {% endif %}
+                {% for attr in children %}
+                <tr class="children-list">
+                    {% set name = attr["name"] %}
+                    {% set url = attr["url"] %}
+                    <td>
+                        {% if attr["is_directory"] %}
+                        <span class="link-icon-folder">
+                            <i class="iconfont icon-folder"></i>
+                        </span>
+                        {% elif attr["is_media"] %}
+                        <span class="link-icon-movie">
+                            <i class="iconfont icon-button-play--button-television-buttons-movies-play"></i>
+                        </span>
+                        {% else %}
+                        <span class="link-icon-file">
+                            <i class="iconfont icon-file"></i>
+                        </span>
+                        {% endif %}
+                        <a class="file-name" href="{{ url }}" title="{{name}}">{{ name }}</a></td>
+                    {% if attr["is_directory"] %}
+                    <td></td>
+                    <td>--</td>
+                    {% elif attr["is_media"] %}
+                    <td>
+                        <a href="infuse://x-callback-url/play?url={{url}}">infuse</a>
+                        <a href="iina://weblink?url={{ url }}">iina</a>
+                        <a href="potplayer://{{ url }}">potplayer</a>
+                        <a href="vlc://{{ url }}">vlc</a>
+                    </td>
+                    <td>{{ attr["size"] }}</td>
+                    {% else %}
+                    <td></td>
+                    <td>--</td>
+                    {% endif %}
+                    <td><a href="{{ attr[" path_url"] }}?id={{ attr["id"] }}&method=attr">attr</a></td>
+                    <td><a href="{{ attr[" path_url"] }}?id={{ attr["id"] }}&method=desc">desc</a></td>
+                    <td>{{ attr["etime"] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        </div>
+    </body>
+
+</html>

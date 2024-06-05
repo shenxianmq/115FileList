@@ -1,0 +1,13 @@
+# 忽略所有 __pycache__ 目录
+__pycache__/
+.vscode/
+
+# 忽略所有 .idea 目录
+.idea/
+
+115-cookies.txt
+download/
+config/*
+backup/*
+.DS_Store
+*.yaml
