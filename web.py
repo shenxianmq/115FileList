@@ -7,8 +7,6 @@ import os
 working_directory = os.path.dirname(os.path.abspath(__file__))
 os.chdir(working_directory)
 
-
-__author__ = "ChenyangGao <https://chenyanggao.github.io>"
 __version__ = (0, 0, 3)
 
 import uvicorn
@@ -333,4 +331,4 @@ async def query(path: str, request: Request):
 
 
 if __name__ == "__main__":
-    uvicorn.run("web:app", host="0.0.0.0", port=80, reload=True)
+    uvicorn.run("web:app", host="0.0.0.0", port=80, reload=False)

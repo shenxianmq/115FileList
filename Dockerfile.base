@@ -1,0 +1,14 @@
+# 使用官方 Python 镜像作为基础镜像
+FROM python:3.11-slim-bookworm
+#原有镜像里已经装好对应的环境了，因此不需要装旧的依赖
+# FROM shenxianmq/autosymlink_env:base
+
+# 设置工作目录
+WORKDIR /app
+
+# # 复制 requirements.txt 到工作目录
+COPY requirements.txt /app/
+
+# # 安装依赖并删除 requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt && rm requirements.txt
+

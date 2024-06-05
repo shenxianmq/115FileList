@@ -1,0 +1,4 @@
+# 使用官方 Python 镜像作为基础镜像
+FROM shenxianmq/autosymlink_env:latest
+
+RUN pip install ddddocr
