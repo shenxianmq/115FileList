@@ -331,4 +331,4 @@ async def query(path: str, request: Request):
 
 
 if __name__ == "__main__":
-    uvicorn.run("web:app", host="0.0.0.0", port=80, reload=False)
+    uvicorn.run("web:app", host="0.0.0.0", port=3030, reload=False)
