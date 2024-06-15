@@ -2,10 +2,6 @@
 # encoding: utf-8
 
 "获取 115 文件信息和下载链接"
-import os
-
-working_directory = os.path.dirname(os.path.abspath(__file__))
-os.chdir(working_directory)
 
 __version__ = (0, 0, 3)
 
@@ -168,9 +164,19 @@ KEYS = (
     "url",
 )
 
-app = FastAPI()
-app.mount("/static", StaticFiles(directory="static"), name="static")
-templates = Jinja2Templates(directory="./templates")
+import time
+
+
+def measure_time(func):
+    def wrapper(*args, **kwargs):
+        start_time = time.time()
+        result = func(*args, **kwargs)
+        end_time = time.time()
+        total_time = end_time - start_time
+        print(f"总耗时: {total_time:.2f} 秒")
+        return result
+
+    return wrapper
 
 
 def get_url_with_pickcode(pickcode: str, request: Request):
@@ -181,6 +187,7 @@ def get_url_with_pickcode(pickcode: str, request: Request):
             break
     try:
         url = fs.get_url_from_pickcode(pickcode, detail=True, headers=headers)
+        print(url)
         return RedirectResponse(url)
     except OSError:
         raise HTTPException(status_code=404, detail="Not Found")
